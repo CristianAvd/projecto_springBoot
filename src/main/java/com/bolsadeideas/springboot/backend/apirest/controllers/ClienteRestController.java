@@ -11,6 +11,8 @@ import javax.validation.Valid;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
+import com.bolsadeideas.springboot.backend.apirest.models.entity.Usuario;
+import com.bolsadeideas.springboot.backend.apirest.models.services.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
@@ -49,6 +51,9 @@ public class ClienteRestController {
 	
 	@Autowired
 	private IUploadFileService uploadService;
+
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 	// private final Logger log = LoggerFactory.getLogger(ClienteRestController.class);
 
@@ -245,5 +250,10 @@ public class ClienteRestController {
 	@GetMapping("/clientes/regiones")
 	public List<Region> listarRegiones(){
 		return clienteService.findAllRegiones();
+	}
+
+	@GetMapping("/buscarUsuario")
+	public ResponseEntity<Usuario> buscarUsuario(@RequestParam("username") String username){
+		return new ResponseEntity<Usuario>(usuarioService.findByUsername(username), HttpStatus.OK);
 	}
 }

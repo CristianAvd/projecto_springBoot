@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Date;
+
 @SpringBootApplication
 public class SpringBootBackendApirestApplication implements CommandLineRunner{
 
@@ -24,6 +26,9 @@ public class SpringBootBackendApirestApplication implements CommandLineRunner{
 			String passwordBcrypt = passwordEncoder.encode(password);
 			System.out.println(passwordBcrypt);
 		}
+
+		Date date = null;
+		System.out.println("FECHA = "+ date);
 		
 	}
 }
