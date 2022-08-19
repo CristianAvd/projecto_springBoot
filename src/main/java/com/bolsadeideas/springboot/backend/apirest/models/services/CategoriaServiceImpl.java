@@ -17,4 +17,19 @@ public class CategoriaServiceImpl implements ICategoriaService{
     public List<Categoria> findCategorias() {
         return (List<Categoria>) categoriaDao.findAll();
     }
+
+    @Override
+    public Categoria findById(Long id) {
+        return categoriaDao.findById(id).orElse(null);
+    }
+
+    @Override
+    public Categoria save(Categoria categoria) {
+        return categoriaDao.save(categoria);
+    }
+
+    @Override
+    public void delete(Long id) {
+        categoriaDao.deleteById(id);
+    }
 }

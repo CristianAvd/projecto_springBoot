@@ -32,4 +32,8 @@ public interface IClienteService {
 	
 	public List<Producto> findProductoByNombre(String term);
 
+	public List<Factura> findAllFacturas();
+
+
+
 }

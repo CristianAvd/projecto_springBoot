@@ -88,4 +88,9 @@ public class ClienteServiceImpl implements IClienteService {
 		return productoDao.findByNombreContainingIgnoreCase(term);
 	}
 
+	@Override
+	public List<Factura> findAllFacturas() {
+		return (List<Factura>) facturaDao.findAll();
+	}
+
 }

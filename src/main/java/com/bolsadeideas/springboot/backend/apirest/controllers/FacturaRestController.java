@@ -2,6 +2,7 @@ package com.bolsadeideas.springboot.backend.apirest.controllers;
 
 import java.util.List;
 
+import com.bolsadeideas.springboot.backend.apirest.models.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
@@ -26,6 +27,13 @@ public class FacturaRestController {
 
 	@Autowired
 	private IClienteService clienteService;
+
+
+	@Secured({"ROLE_ADMIN", "ROLE_USER"})
+	@GetMapping("/facturas/listar")
+	public List<Factura> index() {
+		return clienteService.findAllFacturas();
+	}
 
 	@Secured({"ROLE_ADMIN", "ROLE_USER"})
 	@GetMapping("/facturas/{id}")
